@@ -16,7 +16,7 @@ local function fn(Sim)
 
   MakeInventoryPhysics(inst)
 
-  inst.AnimState:SetBank("asparagus_ag")
+  inst.AnimState:SetBank("sprites")
   inst.AnimState:SetBuild("asparagus_ag_build")
   inst.AnimState:PlayAnimation("idle", true)
 
