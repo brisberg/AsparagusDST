@@ -16,8 +16,8 @@ local function fn(Sim)
 
   MakeInventoryPhysics(inst)
 
+	inst.AnimState:SetBuild("asparagus_ag_build")
   inst.AnimState:SetBank("asparagus_ag_anim")
-  inst.AnimState:SetBuild("asparagus_ag_build")
   inst.AnimState:PlayAnimation("idle", true)
 
 	if not TheWorld.ismastersim then
