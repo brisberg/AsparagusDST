@@ -15,7 +15,7 @@ local function plant_normal_postinit(prefab)
 		if inst.components.crop.product_prefab == "asparagus_ag" then
 			print("we are asparagus")
 	    inst.SoundEmitter:PlaySound("dontstarve/common/farm_harvestable")
-	    inst.AnimState:OverrideSymbol("swap_grown", "asparagus_ag_build", "asparagus")
+	    inst.AnimState:OverrideSymbol("swap_grown", "asparagus_ag_build", "asparagus_ag")
 	  else
 			old_onmatured(inst)
 		end
