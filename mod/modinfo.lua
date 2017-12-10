@@ -15,7 +15,7 @@ forumthread = ""
 api_version = 10
 
 ---- Can specify a custom icon for this mod!
-icon_atlas = "modicon.xml"
+icon_atlas = "images/modicon.xml"
 icon = "modicon.tex"
 
 --This lets the clients know that they need to download the mod before they can join a server that is using it.
