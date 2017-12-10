@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
-    <folder id="0" name="sprites">
-        <file id="0" name="sprites/shadow.png" width="128" height="64" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="1" name="sprites/asparagus.png" width="256" height="256" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="0" name="asparagus_ag">
+        <file id="0" name="asparagus_ag/shadow.png" width="128" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="asparagus_ag/asparagus.png" width="256" height="256" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="asparagus_ag_anim">
         <animation id="0" name="idle_90s" length="2000">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="asparagus" folder="0" file="0" abs_x="-6.01534" abs_y="1.93939" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="0"/>
-                    <object_ref id="1" name="shadow" folder="0" file="1" abs_x="3.96928" abs_y="41.9693" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="0.5" abs_scale_y="0.5" abs_a="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="0" name="shadow" folder="0" file="0" abs_x="-6.01534" abs_y="1.93939" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" name="asparagus" folder="0" file="1" abs_x="3.96928" abs_y="41.9693" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="0.5" abs_scale_y="0.5" abs_a="1" timeline="0" key="0" z_index="1"/>
                 </key>
                 <key id="1" time="25">
                     <object_ref id="0" timeline="1" key="1" z_index="0"/>

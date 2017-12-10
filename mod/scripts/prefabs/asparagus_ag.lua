@@ -28,16 +28,16 @@ local function fn(Sim)
   inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/inventoryimages/asparagus_ag.xml"
 
-	print("asparagus constructor")
-	-- debug
-    for k, data in pairs(VEGGIES) do
-      print(k)
-
-      for key, value in pairs(data) do
-          print('\t', key, value)
-      end
-    end
-    -- end debug
+	-- print("asparagus constructor")
+	-- -- debug
+  --   for k, data in pairs(VEGGIES) do
+  --     print(k)
+  --
+  --     for key, value in pairs(data) do
+  --         print('\t', key, value)
+  --     end
+  --   end
+  --   -- end debug
   return inst
 end
 
