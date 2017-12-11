@@ -7,51 +7,80 @@ local Assets =
 	Asset("ATLAS", "images/inventoryimages/asparagus_ag.xml"),    -- a custom asset, found in the mod folder
 }
 
--- Write a local function that creates, customizes, and returns an instance of the prefab.
-local function fn(Sim)
-	local inst = CreateEntity()
-	inst.entity:AddTransform()
-	inst.entity:AddAnimState()
-  inst.entity:AddNetwork()
-
-  MakeInventoryPhysics(inst)
-
-	inst.AnimState:SetBuild("asparagus_ag_build")
-  inst.AnimState:SetBank("asparagus_ag_anim")
-  inst.AnimState:PlayAnimation("idle", true)
-
-	if not TheWorld.ismastersim then
-        return inst
-    end
-
-	inst:AddComponent("inspectable")
-  inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/asparagus_ag.xml"
-
-	-- print("asparagus constructor")
-	-- -- debug
-  --   for k, data in pairs(VEGGIES) do
-  --     print(k)
-  --
-  --     for key, value in pairs(data) do
-  --         print('\t', key, value)
-  --     end
-  --   end
-  --   -- end debug
-  return inst
-end
-
+-- Append a record to the VEGGIES table (veggies.lua) so normal seeds will pick us
 VEGGIES["asparagus_ag"] = {
     health = 10,
     hunger = 10,
     cooked_health = 15,
     cooked_hunger = 20,
     seed_weight = 100,
-    perishtime = 1,
-    cooked_perishtime = 2,
+    perishtime = 3600,
+    cooked_perishtime = 3600,
     sanity = 10,
     cooked_sanity = 10,
 }
+
+-- Write a local function that creates, customizes, and returns an instance of the prefab.
+-- Copied from DST/data/scripts/prefabs/veggies.lua
+local function fn()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)
+
+		inst.AnimState:SetBuild("asparagus_ag_build")
+	  inst.AnimState:SetBank("asparagus_ag_anim")
+	  inst.AnimState:PlayAnimation("idle")
+
+    --cookable (from cookable component) added to pristine state for optimization
+    inst:AddTag("cookable")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("edible")
+    inst.components.edible.healthvalue = VEGGIES["asparagus_ag"].health
+    inst.components.edible.hungervalue = VEGGIES["asparagus_ag"].hunger
+    inst.components.edible.sanityvalue = VEGGIES["asparagus_ag"].sanity or 0
+    inst.components.edible.foodtype = FOODTYPE.VEGGIE
+
+    inst:AddComponent("perishable")
+    inst.components.perishable:SetPerishTime(VEGGIES["asparagus_ag"].perishtime)
+    inst.components.perishable:StartPerishing()
+    inst.components.perishable.onperishreplacement = "spoiled_food"
+
+    inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+
+    inst:AddComponent("inspectable")
+	  inst:AddComponent("inventoryitem")
+		inst.components.inventoryitem.atlasname = "images/inventoryimages/asparagus_ag.xml"
+
+    MakeSmallBurnable(inst)
+    MakeSmallPropagator(inst)
+    ---------------------
+
+    inst:AddComponent("bait")
+
+    ------------------------------------------------
+
+    inst:AddComponent("tradable")
+
+    ------------------------------------------------
+
+    inst:AddComponent("cookable")
+    inst.components.cookable.product = "asparagus_ag_cooked"
+
+    MakeHauntableLaunchAndPerish(inst)
+
+    return inst
+end
 
 -- Add some strings for this item
 STRINGS.NAMES.ASPARAGUS_AG = "Asparagus name"
