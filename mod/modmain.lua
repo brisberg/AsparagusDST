@@ -1,6 +1,7 @@
 PrefabFiles = {
 	"asparagus_ag",
 	"asparagus_ag_cooked",
+	"asparagus_ag_seeds",
 }
 
 -- debug speed
