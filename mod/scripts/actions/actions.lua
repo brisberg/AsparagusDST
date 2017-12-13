@@ -1,17 +1,17 @@
 ----- TEMP ACTIONS ---
 local ACTIONS = _G.ACTIONS
 -- require('actions')
-ACTIONS.AG_SHARE = {
-    priority = 1,
-    strfn = nil,
-    testfn = nil,
-    instant = true,
-    rmb = true,
-    distance = 1,
-}
+-- ACTIONS.AG_SHARE = {
+--     priority = 1,
+--     strfn = nil,
+--     testfn = nil,
+--     instant = true,
+--     rmb = true,
+--     distance = 1,
+-- }
 -- ACTION(1, nil, true, 3)
 
-ACTIONS.AG_SHARE.fn = function(act)
+local share_fn = function(act)
   print("calling AG_SHARE function")
   if act.target ~= nil and
       act.target:IsValid() and
@@ -49,4 +49,18 @@ ACTIONS.AG_SHARE.fn = function(act)
   end
 end
 
-ACTIONS.AG_SHARE.id = "AG_SHARE"
+-- local AG_SHARE_ACTION = AddComponentAction("AG_SHARE", "ag_sharable", share_fn)
+--
+-- AG_SHARE_ACTION.priority = 1
+-- AG_SHARE_ACTION.rmb = true
+-- AG_SHARE_ACTION.distance = 1
+-- AG_SHARE_ACTION.mount_valid = false
+
+-- ACTIONS.AG_SHARE = {
+--     priority = 1,
+--     strfn = nil,
+--     testfn = nil,
+--     instant = true,
+--     rmb = true,
+--     distance = 1,
+-- }

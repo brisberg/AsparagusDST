@@ -55,7 +55,7 @@ local function fn()
     ------------------------------------------------
     inst:AddComponent("tradable")
 
-    inst:AddComponent("ag_sharable")
+    inst:AddComponent("sharable")
 
     MakeHauntableLaunchAndPerish(inst)
 

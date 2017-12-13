@@ -23,3 +23,28 @@ local function plant_normal_postinit(prefab)
 	prefab.components.crop:SetOnMatureFn(onmatured_override)
 end
 AddPrefabPostInit("plant_normal", plant_normal_postinit)
+
+
+local Action = GLOBAL.Action
+local ActionHandler = GLOBAL.ActionHandler
+local SHARE = Action(3)
+SHARE.str = "Share"
+SHARE.id = "SHARE"
+SHARE.fn = function(act)
+	-- local targ = act.invobject or act.target
+	-- if targ.components.watch then
+	-- 	return act.doer.components.predictor:Predict(targ)
+	-- end
+	print("SHARE action")
+end
+AddAction(SHARE)
+AddStategraphActionHandler("wilson", ActionHandler(SHARE, "book"))
+
+local function share_item(inst, doer, target, actions, right)
+	print("checking share_item")
+  -- Do logic here to check if we should enable the actions
+	-- Use doer.replica and doer:hasTag("foo") for testing, not the
+	-- components directly
+	table.insert(actions, GLOBAL.ACTIONS.SHARE)
+end
+AddComponentAction("USEITEM", "sharable", share_item)
