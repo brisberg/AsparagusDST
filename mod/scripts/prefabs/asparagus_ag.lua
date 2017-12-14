@@ -11,13 +11,13 @@ local Assets =
 VEGGIES["asparagus_ag"] = {
     health = 10,
     hunger = 10,
-    cooked_health = 15,
-    cooked_hunger = 20,
+    cooked_health = -10,
+    cooked_hunger = -20,
     seed_weight = 100,
     perishtime = 3600,
     cooked_perishtime = 3600,
     sanity = 10,
-    cooked_sanity = 10,
+    cooked_sanity = -6,
 }
 
 -- Write a local function that creates, customizes, and returns an instance of the prefab.
