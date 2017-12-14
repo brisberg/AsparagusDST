@@ -37,12 +37,13 @@ SHARE.fn = function(act)
 	-- end
 	-- act.doer.sg:GoToState("quickeat", {feed=act.invobject, feeder=act.doer})
 	print("SHARE action")
+	return true
 end
 AddAction(SHARE)
 AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
 
 local function share_item(inst, doer, target, actions, right)
-	print("checking share_item")
+	-- print("checking share_item")
   -- Do logic here to check if we should enable the actions
 	-- Use doer.replica and doer:HasTag("foo") for testing, not the
 	-- components directly
@@ -65,6 +66,7 @@ local share_sg = State({
   onenter = function(inst)
     inst.components.locomotor:Stop()
 		inst.sg.statemem.shareitem = inst:GetBufferedAction().invobject
+		inst.sg.statemem.action = inst:GetBufferedAction()
     inst.AnimState:PlayAnimation("give")
     inst.AnimState:PushAnimation("give_pst", false)
   end,
@@ -80,10 +82,18 @@ local share_sg = State({
   {
     EventHandler("animqueueover", function(inst)
       if inst.AnimState:AnimDone() then
-        inst.sg:GoToState(
-					"quickeat",
-					{feed=inst.sg.statemem.shareitem, feeder=inst}
+				local eataction = GLOBAL.BufferedAction(
+					inst,
+					nil,
+					GLOBAL.ACTIONS.EAT,
+					inst.sg.statemem.shareitem
 				)
+				inst:PushBufferedAction(eataction)
+        inst.sg:GoToState("quickeat")
+				-- inst.sg:GoToState(
+				-- 	"quickeat",
+				-- 	{feed=inst.sg.statemem.shareitem, feeder=inst}
+				-- )
       end
     end),
   },
