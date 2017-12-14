@@ -82,13 +82,23 @@ local share_sg = State({
   {
     EventHandler("animqueueover", function(inst)
       if inst.AnimState:AnimDone() then
+				local shareditem = inst.sg.statemem.shareitem
+				local halffood = GLOBAL.SpawnPrefab(shareditem.prefab)
+				halffood.components.edible.healthvalue = halffood.components.edible.healthvalue/2
+				halffood.components.edible.hungervalue = halffood.components.edible.hungervalue/2
+				halffood.components.edible.sanityvalue = halffood.components.edible.sanityvalue/2 + 5
 				local eataction = GLOBAL.BufferedAction(
 					inst,
 					nil,
 					GLOBAL.ACTIONS.EAT,
-					inst.sg.statemem.shareitem
+					halffood
 				)
 				inst:PushBufferedAction(eataction)
+				if shareditem.components.stackable ~= nil then
+					shareditem.components.stackable:Get():Remove()
+				else
+					shareditem:Remove()
+				end
         inst.sg:GoToState("quickeat")
 				-- inst.sg:GoToState(
 				-- 	"quickeat",
