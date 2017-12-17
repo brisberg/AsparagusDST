@@ -1,3 +1,4 @@
+.DS_STORE
 mod/**/*.zip
 mod/**/*.tex
 mod/**/*.xml
