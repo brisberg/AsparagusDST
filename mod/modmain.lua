@@ -9,6 +9,9 @@ GLOBAL.TUNING.SEEDS_GROW_TIME = 5
 
 -- PortInit for plant_normal to swap the sprite of asparagus when it is grown in a farm
 local function plant_normal_postinit(prefab)
+	if not GLOBAL.TheNet:GetIsServer() then
+		return
+	end
 
 	local onmatured_base = prefab.components.crop.onmatured
 	function onmatured_override(inst)
@@ -109,3 +112,36 @@ local share_sg = State({
   },
 })
 AddStategraphState("wilson", share_sg)
+
+local share_sg_client = State({
+  name = "give",
+  tags = { "giving" },
+
+  onenter = function(inst)
+    inst.components.locomotor:Stop()
+    if not inst:HasTag("giving") then
+      inst.AnimState:PlayAnimation("give")
+    end
+
+    inst:PerformPreviewBufferedAction()
+    inst.sg:SetTimeout(TIMEOUT)
+  end,
+
+  onupdate = function(inst)
+    if inst:HasTag("giving") then
+      if inst.entity:FlattenMovementPrediction() then
+        inst.sg:GoToState("idle", "noanim")
+      end
+    elseif inst.bufferedaction == nil then
+      inst.AnimState:PlayAnimation("give_pst")
+      inst.sg:GoToState("idle", true)
+    end
+  end,
+
+  ontimeout = function(inst)
+    inst:ClearBufferedAction()
+    inst.AnimState:PlayAnimation("give_pst")
+    inst.sg:GoToState("idle", true)
+  end,
+})
+AddStategraphState("wilson_client", share_sg_client)
