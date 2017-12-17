@@ -7,9 +7,10 @@ PrefabFiles = {
 -- debug speed
 GLOBAL.TUNING.SEEDS_GROW_TIME = 5
 
--- PortInit for plant_normal to swap the sprite of asparagus when it is grown in a farm
-local function plant_normal_postinit(prefab)
-	if not GLOBAL.TheNet:GetIsServer() then
+-- PostInit for plant_normal to swap the sprite of asparagus when it is grown in a farm
+-- Have to do it this way so the function is run after world init (and we can access TheWorld)
+AddPrefabPostInit("plant_normal", function(prefab)
+	if not GLOBAL.TheWorld.ismastersim then
 		return
 	end
 
@@ -24,8 +25,7 @@ local function plant_normal_postinit(prefab)
 	end
 
 	prefab.components.crop:SetOnMatureFn(onmatured_override)
-end
-AddPrefabPostInit("plant_normal", plant_normal_postinit)
+end)
 
 
 local Action = GLOBAL.Action
@@ -46,7 +46,7 @@ AddAction(SHARE)
 AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
 
 local function share_item(inst, doer, target, actions, right)
-	-- print("checking share_item")
+	print("checking share_item")
   -- Do logic here to check if we should enable the actions
 	-- Use doer.replica and doer:HasTag("foo") for testing, not the
 	-- components directly
