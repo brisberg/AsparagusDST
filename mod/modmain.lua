@@ -30,27 +30,34 @@ end)
 
 local Action = GLOBAL.Action
 local ActionHandler = GLOBAL.ActionHandler
-local SHARE = Action(3)
-SHARE.str = "Share"
-SHARE.id = "SHARE"
-SHARE.fn = function(act)
+local SHARE = AddAction("SHARE", "Share", function(act)
 	-- local targ = act.invobject or act.target
 	-- if targ.components.watch then
 	-- 	return act.doer.components.predictor:Predict(targ)
 	-- end
-	-- act.doer.sg:GoToState("quickeat", {feed=act.invobject, feeder=act.doer})
+	if not GLOBAL.TheWorld.ismastersim then
+		return true
+	end
+
+	local shareditem = act.invobject
+	local halffood = GLOBAL.SpawnPrefab(shareditem.prefab)
+	halffood.components.edible.healthvalue = halffood.components.edible.healthvalue/2
+	halffood.components.edible.hungervalue = halffood.components.edible.hungervalue/2
+	halffood.components.edible.sanityvalue = halffood.components.edible.sanityvalue/2 + 5
+
+	act.target.sg:GoToState("quickeat", {feed=halffood, feeder=act.doer})
 	print("SHARE action")
 	return true
-end
-AddAction(SHARE)
+end)
+SHARE.priority = 4
 AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
 
 local function share_item(inst, doer, target, actions, right)
-	print("checking share_item")
+	-- print("checking share_item")
   -- Do logic here to check if we should enable the actions
 	-- Use doer.replica and doer:HasTag("foo") for testing, not the
 	-- components directly
-	if right then
+	if right and target:HasTag("player") then
 		table.insert(actions, GLOBAL.ACTIONS.SHARE)
 	end
 end
@@ -98,6 +105,7 @@ local share_sg = State({
 				)
 				inst:PushBufferedAction(eataction)
 				if shareditem.components.stackable ~= nil then
+					print("removing original item")
 					shareditem.components.stackable:Get():Remove()
 				else
 					shareditem:Remove()
