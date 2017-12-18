@@ -9,15 +9,15 @@ local Assets =
 
 -- Append a record to the VEGGIES table (veggies.lua) so normal seeds will pick us
 VEGGIES["asparagus_ag"] = {
-    health = 10,
-    hunger = 10,
-    cooked_health = -10,
-    cooked_hunger = -20,
-    seed_weight = 100,
-    perishtime = 3600,
-    cooked_perishtime = 3600,
-    sanity = 10,
-    cooked_sanity = -6,
+    seed_weight = 1,
+    health = TUNING.HEALING_TINY,
+    hunger = TUNING.CALORIES_SMALL,
+    sanity = TUNING.SANITY_SUPERTINY,
+    perishtime = TUNING.PERISH_MED,
+    cooked_health = TUNING.HEALING_SMALL,
+    cooked_hunger = TUNING.CALORIES_SMALL,
+    cooked_sanity = TUNING.SANITY_TINY,
+    cooked_perishtime = TUNING.PERISH_FAST,
 }
 
 -- Write a local function that creates, customizes, and returns an instance of the prefab.
