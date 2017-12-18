@@ -5,7 +5,7 @@ PrefabFiles = {
 }
 
 -- debug speed
-GLOBAL.TUNING.SEEDS_GROW_TIME = 5
+-- GLOBAL.TUNING.SEEDS_GROW_TIME = 5
 
 -- Tweaks
 modimport "scripts/tweaks/plant_normal_tweak"
