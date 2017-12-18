@@ -46,7 +46,6 @@ local SHARE = AddAction("SHARE", "Share", function(act)
 	halffood.components.edible.sanityvalue = halffood.components.edible.sanityvalue/2 + 5
 
 	act.target.sg:GoToState("quickeat", {feed=halffood, feeder=act.doer})
-	print("SHARE action")
 	return true
 end)
 SHARE.priority = 4
@@ -54,7 +53,6 @@ AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
 AddStategraphActionHandler("wilson_client", ActionHandler(SHARE, "share"))
 
 local function share_item(inst, doer, target, actions, right)
-	-- print("checking share_item")
   -- Do logic here to check if we should enable the actions
 	-- Use doer.replica and doer:HasTag("foo") for testing, not the
 	-- components directly
@@ -106,16 +104,11 @@ local share_sg = State({
 				)
 				inst:PushBufferedAction(eataction)
 				if shareditem.components.stackable ~= nil then
-					print("removing original item")
 					shareditem.components.stackable:Get():Remove()
 				else
 					shareditem:Remove()
 				end
         inst.sg:GoToState("quickeat")
-				-- inst.sg:GoToState(
-				-- 	"quickeat",
-				-- 	{feed=inst.sg.statemem.shareitem, feeder=inst}
-				-- )
       end
     end),
   },
