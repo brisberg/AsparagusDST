@@ -51,6 +51,7 @@ local SHARE = AddAction("SHARE", "Share", function(act)
 end)
 SHARE.priority = 4
 AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
+AddStategraphActionHandler("wilson_client", ActionHandler(SHARE, "share"))
 
 local function share_item(inst, doer, target, actions, right)
 	-- print("checking share_item")
@@ -71,7 +72,7 @@ local FRAMES = GLOBAL.FRAMES
 
 local share_sg = State({
   name = "share",
-  tags = { "giving" },
+  tags = { "sharing" },
 
   onenter = function(inst)
     inst.components.locomotor:Stop()
@@ -122,21 +123,21 @@ local share_sg = State({
 AddStategraphState("wilson", share_sg)
 
 local share_sg_client = State({
-  name = "give",
-  tags = { "giving" },
+  name = "share",
+  tags = { "sharing" },
 
   onenter = function(inst)
     inst.components.locomotor:Stop()
-    if not inst:HasTag("giving") then
+    if not inst:HasTag("sharing") then
       inst.AnimState:PlayAnimation("give")
     end
 
     inst:PerformPreviewBufferedAction()
-    inst.sg:SetTimeout(TIMEOUT)
+    inst.sg:SetTimeout(2)
   end,
 
   onupdate = function(inst)
-    if inst:HasTag("giving") then
+    if inst:HasTag("sharing") then
       if inst.entity:FlattenMovementPrediction() then
         inst.sg:GoToState("idle", "noanim")
       end
