@@ -1,66 +1,33 @@
------ TEMP ACTIONS ---
-local ACTIONS = _G.ACTIONS
--- require('actions')
--- ACTIONS.AG_SHARE = {
---     priority = 1,
---     strfn = nil,
---     testfn = nil,
---     instant = true,
---     rmb = true,
---     distance = 1,
--- }
--- ACTION(1, nil, true, 3)
+local Action = GLOBAL.Action
+local ActionHandler = GLOBAL.ActionHandler
 
-local share_fn = function(act)
-  print("calling AG_SHARE function")
-  if act.target ~= nil and
-      act.target:IsValid() and
-      act.target.sg:HasStateTag("idle") and
-      not (act.target.sg:HasStateTag("busy") or
-          act.target.sg:HasStateTag("attacking") or
-          act.target.sg:HasStateTag("sleeping") or
-          act.target:HasTag("playerghost")) and
-      act.target.components.eater ~= nil and
-      act.invobject.components.edible ~= nil and
-      act.target.components.eater:CanEat(act.invobject) and
-      (TheNet:GetPVPEnabled() or
-      not (act.invobject:HasTag("badfood") or
-          act.invobject:HasTag("spoiled"))) then
-
-      if act.target.components.eater:PrefersToEat(act.invobject) then
-          local food = act.invobject.components.inventoryitem:RemoveFromOwner()
-          if food ~= nil then
-              act.target:AddChild(food)
-              food:RemoveFromScene()
-              food.components.inventoryitem:HibernateLivingItem()
-              food.persists = false
-              act.target.sg:GoToState(
-                  (act.target:HasTag("beaver") and "beavereat") or
-                  (food.components.edible.foodtype == FOODTYPE.MEAT and "eat") or
-                  "quickeat",
-                  {feed=food,feeder=act.doer}
-              )
-              return true
-          end
-      else
-          act.target:PushEvent("wonteatfood", { food = act.invobject })
-          return true -- the action still "succeeded", there's just no result on this end
-      end
-  end
+-- Component Action for "sharable"
+local function share_item(inst, doer, target, actions, right)
+  -- Do logic here to check if we should enable the actions
+	-- Use doer.replica and doer:HasTag("foo") for testing, not the
+	-- components directly
+	if right and target:HasTag("player") then
+		table.insert(actions, GLOBAL.ACTIONS.SHARE)
+	end
 end
+AddComponentAction("USEITEM", "sharable", share_item)
 
--- local AG_SHARE_ACTION = AddComponentAction("AG_SHARE", "ag_sharable", share_fn)
---
--- AG_SHARE_ACTION.priority = 1
--- AG_SHARE_ACTION.rmb = true
--- AG_SHARE_ACTION.distance = 1
--- AG_SHARE_ACTION.mount_valid = false
+-- Action method and SG Action Handlers
+local SHARE = AddAction("SHARE", "Share", function(act)
 
--- ACTIONS.AG_SHARE = {
---     priority = 1,
---     strfn = nil,
---     testfn = nil,
---     instant = true,
---     rmb = true,
---     distance = 1,
--- }
+	if not GLOBAL.TheWorld.ismastersim then
+		return true
+	end
+
+	local shareditem = act.invobject
+	local halffood = GLOBAL.SpawnPrefab(shareditem.prefab)
+	halffood.components.edible.healthvalue = halffood.components.edible.healthvalue/2
+	halffood.components.edible.hungervalue = halffood.components.edible.hungervalue/2
+	halffood.components.edible.sanityvalue = halffood.components.edible.sanityvalue/2 + 5
+
+	act.target.sg:GoToState("quickeat", {feed=halffood, feeder=act.doer})
+	return true
+end)
+SHARE.priority = 4
+AddStategraphActionHandler("wilson", ActionHandler(SHARE, "share"))
+AddStategraphActionHandler("wilson_client", ActionHandler(SHARE, "share"))
