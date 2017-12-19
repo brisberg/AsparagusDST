@@ -20,12 +20,10 @@ local SHARE = AddAction("SHARE", "Share", function(act)
 	end
 
 	local shareditem = act.invobject
-	local halffood = GLOBAL.SpawnPrefab(shareditem.prefab)
-	halffood.components.edible.healthvalue = halffood.components.edible.healthvalue/2
-	halffood.components.edible.hungervalue = halffood.components.edible.hungervalue/2
-	halffood.components.edible.sanityvalue = halffood.components.edible.sanityvalue/2 + 5
-
-	act.target.sg:GoToState("quickeat", {feed=halffood, feeder=act.doer})
+	if act.invobject and act.invobject.components.sharable then
+		local halffood = act.invobject.components.sharable:SpawnHalfItemToken()
+		act.target.sg:GoToState("quickeat", {feed=halffood, feeder=act.doer})
+	end
 	return true
 end)
 SHARE.priority = 4
