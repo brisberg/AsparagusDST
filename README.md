@@ -23,4 +23,4 @@ Asparagus Seeds:
 
 Have feedback, suggestions, or found a bug? Post in the pinned discussions below.
 
-Full source available on [url=https://github.com/brisberg/TameTallbirds]Github[/url]. If you have a Github account you can post an [url=https://github.com/brisberg/TameTallbirds/issues]issue[/url] or open a pull request.
+Full source available on [url=https://github.com/brisberg/AsparagusDST]Github[/url]. If you have a Github account you can post an [url=https://github.com/brisberg/AsparagusDST/issues]issue[/url] or open a pull request.
