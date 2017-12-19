@@ -20,3 +20,7 @@ Grilled Asparagus (when shared):
 Asparagus Seeds:
 - Feed raw Asparagus to a bird in a birdcage to acquire
 - Grows Asparagus in Farm Plots
+
+Have feedback, suggestions, or found a bug? Post in the pinned discussions below.
+
+Full source available on [url=https://github.com/brisberg/TameTallbirds]Github[/url]. If you have a Github account you can post an [url=https://github.com/brisberg/TameTallbirds/issues]issue[/url] or open a pull request.
