@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
     <folder id="0" name="asparagus_ag_sym">
-        <file id="0" name="asparagus_ag_sym/asparagus.png" width="128" height="128" pivot_x="0.6" pivot_y="0.338462"/>
-        <file id="1" name="asparagus_ag_sym/shadow.png" width="128" height="64" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="2" name="asparagus_ag_sym/asparagus_cooked.png" width="128" height="128" pivot_x="0.6" pivot_y="0.338462"/>
+        <file id="0" name="asparagus_ag_sym/asparagus.png" width="145" height="99" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="asparagus_ag_sym/shadow.png" width="128" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="asparagus_ag_sym/asparagus_cooked.png" width="145" height="99" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="asparagus_ag_anim">
         <animation id="0" name="cooked_90s" length="2000">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="asparagus_cooked" folder="0" file="2" abs_x="1.930076" abs_y="34.216398" abs_pivot_x="0.6" abs_pivot_y="0.338462" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
-                    <object_ref id="1" name="shadow_000" folder="0" file="1" abs_x="-6.01534" abs_y="1.93939" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="0" name="shadow_000" folder="0" file="1" abs_x="-58.01534" abs_y="39.93939" abs_pivot_x="0" abs_pivot_y="1" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" name="asparagus_cooked" folder="0" file="2" abs_x="3.930076" abs_y="13.216398" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1"/>
                 </key>
             </mainline>
             <timeline id="0" name="asparagus_cooked">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="1.930076" y="34.216398"/>
+                    <object folder="0" file="2" x="3.930076" y="13.216398" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="shadow_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-6.01534" y="1.93939"/>
+                    <object folder="0" file="1" x="-58.01534" y="39.93939" angle="0"/>
                 </key>
             </timeline>
         </animation>
         <animation id="1" name="idle_90s" length="2000">
             <mainline>
                 <key id="0">
-                    <object_ref id="0" name="shadow" folder="0" file="1" abs_x="-6.01534" abs_y="1.93939" abs_pivot_x="0.5" abs_pivot_y="0.5" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="0"/>
-                    <object_ref id="1" name="asparagus_ag" folder="0" file="0" abs_x="0.945498" abs_y="38.154801" abs_pivot_x="0.554502" abs_pivot_y="0.345199" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="0" name="shadow" folder="0" file="1" abs_x="-70.01534" abs_y="27.93939" abs_pivot_x="0" abs_pivot_y="1" abs_angle="29.446752" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" name="asparagus_ag" folder="0" file="0" abs_x="-1.994974" abs_y="30.024807" abs_pivot_x="0.49294" abs_pivot_y="0.465154" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1"/>
                 </key>
             </mainline>
             <timeline id="0" name="asparagus_ag">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="0.945498" y="38.154801" pivot_x="0.554502" pivot_y="0.345199" angle="0"/>
+                    <object folder="0" file="0" x="-1.994974" y="30.024807" pivot_x="0.49294" pivot_y="0.465154" angle="0" scale_y="1"/>
                 </key>
             </timeline>
             <timeline id="1" name="shadow">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-6.01534" y="1.93939" angle="0"/>
+                    <object folder="0" file="1" x="-70.01534" y="27.93939" angle="29.446752"/>
                 </key>
             </timeline>
         </animation>
