@@ -40,7 +40,7 @@ This mod commemorates my First Year Anniversary with my girlfriend, [url=http://
 [*] Grows Asparagus in Farm Plots
 [/list]
 
-Have feedback, suggestions, or found a bug? Post in the pinned [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/1249632198]discussions[/url] above.
+Have feedback, suggestions, or found a bug? Post in the pinned [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/1249632198]discussions[/url] below.
 
 Full source available on [url=https://github.com/brisberg/AsparagusDST]Github[/url]. If you have a Github account you can post an [url=https://github.com/brisberg/AsparagusDST/issues]issue[/url] or open a pull request.
 
