@@ -1,7 +1,16 @@
 # AsparagusDST
 Don't Starve Mod to add Asparagus as a grow-able, and sharable food.
 
-Asparagus added as new farmable vegetable to Don't Starve Together. While fairly mundane on it's own, when grilled the asparagus can be shared with another player restoring half the normal health, hunger, and sanity (with a bonus +5 Sanity for each player for being social)!
+To upload:
+
+`npm install gulp`
+
+`gulp build`
+
+Launch Don't Starve Mod Tools and upload the `build` directory.
+
+## Steam Workshop Description:
+Adds Asparagus as new farmable vegetable to Don't Starve Together. While fairly mundane on it's own, when grilled the asparagus can be shared with another player restoring half the normal health, hunger, and sanity (with a bonus +5 Sanity for each player for being social)!
 
 This mod commemorates my First Year Anniversary with my girlfriend, [url=http://steamcommunity.com/id/wheatmouse/]Yuli[/url] (who also did the art for this mod!). One of the first times we met we split an order of Grilled Asparagus at lunch, and I still remember it to this day.
 
