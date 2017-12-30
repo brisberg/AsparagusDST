@@ -2,3 +2,4 @@
 mod/**/*.zip
 mod/**/*.tex
 mod/**/*.xml
+build/
