@@ -1,5 +1,5 @@
 -- This information tells other players more about the mod
-name = "Asparagus"
+name = "Dev Asparagus"
 description = "Adds Asparagus as a new crop grown in farm. Grill it to share with your friends!"
 author = "Keidence and Yuli"
 version = "1.0.1"
