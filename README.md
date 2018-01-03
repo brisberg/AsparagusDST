@@ -10,7 +10,7 @@ To upload:
 Launch Don't Starve Mod Tools and upload the `build` directory.
 
 ## Steam Workshop Description:
-Adds Asparagus as new farmable vegetable to Don't Starve Together. While fairly mundane on it's own, when grilled the asparagus can be shared with another player restoring half the normal health, hunger, and sanity (with a bonus +5 Sanity for each player for being social)!
+Adds Asparagus as new farmable vegetable to Don't Starve Together. While fairly mundane on its own, when grilled the asparagus can be shared with another player restoring half the normal health, hunger, and sanity (with a bonus +5 Sanity for each player for being social)!
 
 This mod commemorates my First Year Anniversary with my girlfriend, [url=http://steamcommunity.com/id/wheatmouse/]Yuli[/url] (who also did the art for this mod!). One of the first times we met we split an order of Grilled Asparagus at lunch, and I still remember it to this day.
 
@@ -21,15 +21,17 @@ This mod commemorates my First Year Anniversary with my girlfriend, [url=http://
 [*] Health: 1
 [*] Hunger: 12.5
 [*] Sanity: 0
+[*] Spoils in: 10 Days
 [/list]
 
 [h1]Grilled Asparagus (when shared):[/h1]
 
 [img]https://raw.githubusercontent.com/brisberg/AsparagusDST/master/mod/images/inventoryimages/asparagus_ag_cooked.png[/img]
 [list]
-[*] Health: 4 (2)
+[*] Health: 3 (1.5)
 [*] Hunger: 12.5 (6.25)
 [*] Sanity: 5 (7.5)
+[*] Spoils in: 6 Days
 [/list]
 
 [h1]Asparagus Seeds:[/h1]
@@ -38,6 +40,18 @@ This mod commemorates my First Year Anniversary with my girlfriend, [url=http://
 [list]
 [*] Feed raw Asparagus to a bird in a birdcage to acquire seeds
 [*] Grows Asparagus in Farm Plots
+[/list]
+
+[h1]Bacon-wrapped Asparagus (when shared):[/h1]
+
+[img]https://raw.githubusercontent.com/brisberg/AsparagusDST/master/mod/images/inventoryimages/asparagus_ag_seeds.png[/img]
+[list]
+[*] New Crockpot Recipe
+[*] 1 Asparagus, at least one full Meat, at least one Twig
+[*] Health: 8 (4)
+[*] Hunger: 37.5 (17.25)
+[*] Sanity: 20 (15)
+[*] Spoils in: 15 Days
 [/list]
 
 Have feedback, suggestions, or found a bug? Post in the pinned [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/1249632198]discussions[/url] below.
