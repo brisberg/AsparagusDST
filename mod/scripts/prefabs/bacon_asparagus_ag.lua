@@ -63,6 +63,8 @@ local function fn()
 
     inst:AddComponent("bait")
 
+		inst:AddComponent("sharable")
+
     ------------------------------------------------
     inst:AddComponent("tradable")
 
