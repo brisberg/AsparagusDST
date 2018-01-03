@@ -1,8 +1,8 @@
 -- This information tells other players more about the mod
-name = "Dev Asparagus"
+name = "Asparagus"
 description = "Adds Asparagus as a new crop grown in farm. Grill it to share with your friends!"
 author = "Keidence and Yuli"
-version = "1.0.1"
+version = "1.0.3"
 
 -- This is the URL name of the mod's thread on the forum; the part after the index.php? and before the first & in the URL
 -- Example:
