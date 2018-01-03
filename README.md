@@ -44,7 +44,7 @@ This mod commemorates my First Year Anniversary with my girlfriend, [url=http://
 
 [h1]Bacon-wrapped Asparagus (when shared):[/h1]
 
-[img]https://raw.githubusercontent.com/brisberg/AsparagusDST/master/mod/images/inventoryimages/asparagus_ag_seeds.png[/img]
+[img]https://raw.githubusercontent.com/brisberg/AsparagusDST/master/mod/images/inventoryimages/bacon_asparagus_ag.png[/img]
 [list]
 [*] New Crockpot Recipe
 [*] 1 Asparagus, at least one full Meat, at least one Twig
